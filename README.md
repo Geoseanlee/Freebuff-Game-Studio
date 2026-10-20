@@ -1,6 +1,7 @@
-> ### FreebuffStudio
+> ### Freebuff Game Studio
 >
-> This repo is a fork of [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+> **<https://github.com/Geoseanlee/Freebuff-Game-Studio>** — this repo is a fork
+> of [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
 > that runs the same studio on **Freebuff**. Upstream's `.claude/` tree is kept
 > untouched as the source of truth; `.freebuff/` is generated from it by
 > `python3 scripts/fbgs.py sync`, and Freebuff discovers the skills through
