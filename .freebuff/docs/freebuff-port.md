@@ -15,6 +15,16 @@ Freebuff Desktop 0.0.180 does not have.
 | `${CLAUDE_SKILL_DIR}` shell substitution | `<skill-dir>` in text; the `skill` tool loads by name |
 | `${CLAUDE_PROJECT_DIR}` | `$FREEBUFF_PROJECT_DIR`, set by the ported shell scripts |
 
+### The fork still ships `.claude/`
+
+This repo keeps upstream CCGS in `.claude/`, so Freebuff's loader reads
+`{cwd}/.claude/skills` first and `{cwd}/.agents/skills` second, the later
+directory winning per name. That is harmless today — every one of the 74
+`.claude/skills` names also exists in `.freebuff/skills` (49 role skills + 74
+workflow skills + `fbgs` = 124), so the ported copy always wins — but it means
+a skill added upstream is briefly visible in its unported form until
+`scripts/fbgs.py sync` runs. Sync after every upstream merge.
+
 Freebuff's skill parser accepts `name`, `description`, `license`,
 `disable-model-invocation`, and `metadata`. Other frontmatter keys in the
 migrated files (`argument-hint`, `allowed-tools`, `model`, `user-invocable`,
@@ -79,6 +89,11 @@ equivalent above; do not claim a tool that is not in the current tool set.
 
 `scripts/fbgs.py sync` is idempotent: it re-copies CCGS content, regenerates
 role skills, and rewrites paths. It leaves hand-written `fbgs`, `FBGS.md`,
-`AGENTS.md`, and this file alone. `scripts/fbgs.py check` validates the loader
-contract: frontmatter, name/directory match, description length, no stale
-`.claude` paths, referenced helper files, and roster coverage.
+`AGENTS.md`, and this file alone. With no `--source` it reads this repo's own
+`.claude/`, so the fork is self-contained.
+
+`scripts/fbgs.py check` validates the loader contract: frontmatter,
+name/directory match, description length, no stale `.claude` paths, referenced
+helper files, and roster coverage. It also re-runs the whole sync pipeline into
+a scratch directory and diffs the result, so `check` fails on any `.freebuff`
+file that is stale, missing, or orphaned relative to `.claude`.

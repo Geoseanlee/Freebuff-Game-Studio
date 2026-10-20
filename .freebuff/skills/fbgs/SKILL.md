@@ -13,7 +13,7 @@ docs are in `.freebuff/docs/`.
 ## Route the request
 
 1. **Read the state first.** Run
-   `bash .freebuff/hooks/yaml-helper.sh resolve_config --keys project.stage,workflow,automation`
+   `bash .freebuff/hooks/yaml-helper.sh resolve_config --keys project.stage,modes.rigor,modes.automation`
    and read `project.yaml`, `production/stage.txt` if present, and
    `.freebuff/docs/workflow-catalog.yaml` when the next step is unclear.
 2. **Pick roles.** Name the role(s) the task needs, announce them in one line,
