@@ -1,3 +1,16 @@
+> ### FreebuffStudio
+>
+> This repo is a fork of [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios)
+> that runs the same studio on **Freebuff**. Upstream's `.claude/` tree is kept
+> untouched as the source of truth; `.freebuff/` is generated from it by
+> `python3 scripts/fbgs.py sync`, and Freebuff discovers the skills through
+> `.agents/skills`. Open a conversation here and say `FBGS: producer …`.
+> Start with [FBGS.md](FBGS.md). To pull upstream work:
+> `git fetch upstream && git merge upstream/main && python3 scripts/fbgs.py sync`.
+> Everything below is the upstream project's README.
+
+---
+
 <p align="center">
   <h1 align="center">Claude Code Game Studios</h1>
   <p align="center">

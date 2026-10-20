@@ -9,6 +9,13 @@
 Thumbs.db
 Desktop.ini
 
+# === Freebuff ===
+# The port in .freebuff/ is generated from .claude/ and IS committed; only the
+# runtime artifacts Freebuff writes into it are ignored.
+.freebuff/project-id
+.freebuff/agent-memory/
+.freebuff/worktrees/
+
 # === Claude Code Local ===
 .claude/settings.local.json
 CLAUDE.local.md
